@@ -53,6 +53,14 @@ while (restartGame){
 
     // Continues looping until the user guesses the correct number or runs out of attempts
     while (true){
+        // Displays the umber/answer when a code word is entered
+        if (guess === `ur mom`){
+            alert(`The number is ${randomNum}`)
+
+            // Prompts the user to enter another guess
+            guess = prompt(`Please enter a guess from 1 to ${rangeNum}. You have ${attempts} attempt(s) left:`);
+        }
+
         // Attempts to convert the user's guess into a number
         guess = parseInt(guess);
     
@@ -82,5 +90,23 @@ while (restartGame){
             guess = prompt(`Too high. You have ${attempts} attempt(s) left`)
         }
     }
-    break;
+
+    playAgain = prompt(`Would you like to play again? Y for yes. N for no.`);
+
+    // loop continues until user submits a valid response
+    while(true){
+        // Checks if the user's answer is no
+        if (playAgain.toUpperCase() === `N`){
+            // Alerts the user that the game is over and the game does NOT restart
+            alert(`Thanks for playing`);
+            restartGame = false;
+            break;
+            // Checks if the user's answer is yes
+        }else if (playAgain.toUpperCase() === `Y`){
+            // The game restarts
+            break;
+        }else{
+            playAgain = prompt(`Pleasse enter Y or N.`);
+        }
+    }
 }
